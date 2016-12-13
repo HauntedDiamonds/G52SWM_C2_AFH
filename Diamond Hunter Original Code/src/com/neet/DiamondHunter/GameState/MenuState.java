@@ -9,6 +9,7 @@ import com.neet.DiamondHunter.Manager.Content;
 import com.neet.DiamondHunter.Manager.GameStateManager;
 import com.neet.DiamondHunter.Manager.JukeBox;
 import com.neet.DiamondHunter.Manager.Keys;
+import com.neet.DiamondHunter.Main.MapEditorMain;
 
 //special version starts here
 
@@ -76,6 +77,10 @@ public class MenuState extends GameState {
 		}
 		if(currentOption == 1) {
 			System.exit(0);
+		}
+		if(currentOption == 2) {
+			MapEditorMain launch = new MapEditorMain();
+			launch.LaunchMapEditor();
 		}
 	}
 	
