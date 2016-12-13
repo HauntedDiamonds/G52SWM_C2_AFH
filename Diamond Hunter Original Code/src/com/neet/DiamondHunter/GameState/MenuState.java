@@ -10,12 +10,16 @@ import com.neet.DiamondHunter.Manager.GameStateManager;
 import com.neet.DiamondHunter.Manager.JukeBox;
 import com.neet.DiamondHunter.Manager.Keys;
 
+//special version starts here
+
 public class MenuState extends GameState {
 	
 	private BufferedImage bg;
 	private BufferedImage diamond;
 	
 	private int currentOption = 0;
+	
+	// prints menu options
 	private String[] options = {
 		"START",
 		"QUIT",
