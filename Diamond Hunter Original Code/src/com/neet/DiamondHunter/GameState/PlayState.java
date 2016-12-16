@@ -169,19 +169,19 @@ public class PlayState extends GameState {
 		diamonds.add(d);
 		
 	}
-	
+	//place items in desired positions
 	private void populateItems() {
 		
 		Item item;
 		
 		item = new Item(tileMap);
 		item.setType(Item.AXE);
-		item.setTilePosition(26, 37);
+		item.setTilePosition(17, 18);
 		items.add(item);
 		
 		item = new Item(tileMap);
 		item.setType(Item.BOAT);
-		item.setTilePosition(12, 4);
+		item.setTilePosition(17, 19);
 		items.add(item);
 		
 	}

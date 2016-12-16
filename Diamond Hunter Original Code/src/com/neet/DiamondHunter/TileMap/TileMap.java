@@ -31,8 +31,8 @@ public class TileMap {
 	private int ymax;
 	
 	// map
-	private int[][] map;
-	private int tileSize;
+	private int[][] map; //multidimensional array
+	private int tileSize; //size of one tile
 	private int numRows;
 	private int numCols;
 	private int width;
@@ -49,6 +49,8 @@ public class TileMap {
 	private int numRowsToDraw;
 	private int numColsToDraw;
 	
+	
+	// TileMap constructor
 	public TileMap(int tileSize) {
 		this.tileSize = tileSize;
 		numRowsToDraw = GamePanel.HEIGHT / tileSize + 2;
@@ -239,22 +241,3 @@ public class TileMap {
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
