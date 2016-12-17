@@ -16,6 +16,7 @@ public class Main extends Application {
 			
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Diamond Hunter Map Editor");
+			// prevent resize of stage
 			primaryStage.setResizable(false);
 			primaryStage.show();
 			

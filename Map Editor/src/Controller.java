@@ -1,17 +1,12 @@
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
+// controller class for map editor javafx
+// the class draw the whole map on canvas when initialize
+
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import javax.imageio.ImageIO;
-
-import com.neet.DiamondHunter.Main.GamePanel;
-import com.neet.DiamondHunter.TileMap.Tile;
-
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
-
 import javafx.fxml.FXML;
 import javafx.scene.image.*;
 import javafx.scene.canvas.Canvas;
@@ -32,6 +27,7 @@ public class Controller {
     
     // tile sets
     private Image tileset = new Image("/Tilesets/testtileset.gif");
+    // to store sub image (newly formed or cropped)
     PixelReader reader = tileset.getPixelReader();
     private double numTilesAcross;
 	private FXTile[][] tiles;
@@ -47,12 +43,13 @@ public class Controller {
 	private Image player = new Image("/Sprites/playersprites.gif");
 	private Image axe = new Image("/Sprites/items.gif");
 	private Image boat = new Image("/Sprites/items.gif");
+	// to store sub image (newly formed or cropped)
 	PixelReader reader2 = diamond.getPixelReader();
 	PixelReader reader3 = player.getPixelReader();
 	PixelReader reader4 = axe.getPixelReader();
 	PixelReader reader5 = boat.getPixelReader();
 	
-
+	// draw map with items 
     @FXML
     public void initialize( )
     {	  	
@@ -73,7 +70,7 @@ public class Controller {
 			tiles[1][col] = new FXTile(subimage, FXTile.BLOCKED);
 		}
 		
-		// load the map files
+		// loading the map files
 		try{
 			InputStream in = getClass().getResourceAsStream("/Maps/testmap.map");
 			BufferedReader br = new BufferedReader(
@@ -97,7 +94,7 @@ public class Controller {
 			e.printStackTrace();
 		}
 		
-		// drawing the map			
+		// drawing the map on canvas			
 		for(int row = 0; row < numRows; row++) {
 			
 			for(int col = 0; col < numCols; col++) {
@@ -115,7 +112,7 @@ public class Controller {
 			}
 		}
 		
-		// drawing the diamonds, not placed correctly still identifying bug in locations
+		// drawing the diamonds
 		WritableImage subimage2;
 		subimage2 = new WritableImage(reader2, 0, 0, tileSize, tileSize);
 		
@@ -138,19 +135,16 @@ public class Controller {
 		// draw player
 		WritableImage subimage3;
 		subimage3 = new WritableImage(reader3, 0, 0, tileSize, tileSize);
-		
 		gc.drawImage(subimage3, 17*tileSize, 17*tileSize);
 		
 		// draw axe
 		WritableImage subimage4;
 		subimage4 = new WritableImage(reader4, tileSize, tileSize, tileSize, tileSize);
-		
 		gc.drawImage(subimage4,37*tileSize, 26*tileSize);
 		
 		// draw boat
 		WritableImage subimage5;
-		subimage5 = new WritableImage(reader5, 0, tileSize, tileSize, tileSize);
-		
+		subimage5 = new WritableImage(reader5, 0, tileSize, tileSize, tileSize);	
 		gc.drawImage(subimage5, 4*tileSize, 12*tileSize);
     }
 }

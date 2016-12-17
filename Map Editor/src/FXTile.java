@@ -1,3 +1,7 @@
+// similar class to tile class
+// special to store tileset for image type
+// differ from tile class tostore buffered image
+
 import javafx.scene.image.Image;
 
 public class FXTile {
