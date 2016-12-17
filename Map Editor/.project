@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>Diamond Hunter Original Code</name>
-			<type>2</type>
-			<location>C:/Users/User/Desktop/G52SWM/Coursework 2/G52SWM_C2_AFH/Diamond Hunter Original Code</location>
-		</link>
-	</linkedResources>
 </projectDescription>

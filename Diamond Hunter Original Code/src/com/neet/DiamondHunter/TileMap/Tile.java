@@ -3,7 +3,9 @@
 
 package com.neet.DiamondHunter.TileMap;
 
+
 import java.awt.image.BufferedImage;
+import javafx.scene.image.Image;
 
 public class Tile {
 	
