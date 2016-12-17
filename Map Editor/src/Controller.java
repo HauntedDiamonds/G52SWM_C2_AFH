@@ -42,6 +42,16 @@ public class Controller {
 	private int numRows;
 	private int numCols;
 	
+	// player and items
+	private Image diamond = new Image("/Sprites/diamond.gif");
+	private Image player = new Image("/Sprites/playersprites.gif");
+	private Image axe = new Image("/Sprites/items.gif");
+	private Image boat = new Image("/Sprites/items.gif");
+	PixelReader reader2 = diamond.getPixelReader();
+	PixelReader reader3 = player.getPixelReader();
+	PixelReader reader4 = axe.getPixelReader();
+	PixelReader reader5 = boat.getPixelReader();
+	
 
     @FXML
     public void initialize( )
@@ -105,5 +115,42 @@ public class Controller {
 			}
 		}
 		
+		// drawing the diamonds, not placed correctly still identifying bug in locations
+		WritableImage subimage2;
+		subimage2 = new WritableImage(reader2, 0, 0, tileSize, tileSize);
+		
+		gc.drawImage(subimage2, 20*tileSize, 20*tileSize);
+		gc.drawImage(subimage2, 12*tileSize, 36*tileSize);
+		gc.drawImage(subimage2, 28*tileSize, 4*tileSize);
+		gc.drawImage(subimage2, 4*tileSize, 34*tileSize);
+		gc.drawImage(subimage2, 28*tileSize, 19*tileSize);
+		gc.drawImage(subimage2, 35*tileSize, 26*tileSize);
+		gc.drawImage(subimage2, 38*tileSize, 36*tileSize);
+		gc.drawImage(subimage2, 27*tileSize, 28*tileSize);
+		gc.drawImage(subimage2, 20*tileSize, 30*tileSize);
+		gc.drawImage(subimage2, 14*tileSize, 25*tileSize);
+		gc.drawImage(subimage2, 4*tileSize, 21*tileSize);
+		gc.drawImage(subimage2, 9*tileSize, 14*tileSize);
+		gc.drawImage(subimage2, 4*tileSize, 3*tileSize);
+		gc.drawImage(subimage2, 20*tileSize, 14*tileSize);
+		gc.drawImage(subimage2, 13*tileSize, 20*tileSize);
+		
+		// draw player
+		WritableImage subimage3;
+		subimage3 = new WritableImage(reader3, 0, 0, tileSize, tileSize);
+		
+		gc.drawImage(subimage3, 17*tileSize, 17*tileSize);
+		
+		// draw axe
+		WritableImage subimage4;
+		subimage4 = new WritableImage(reader4, tileSize, tileSize, tileSize, tileSize);
+		
+		gc.drawImage(subimage4, 26*tileSize, 37*tileSize);
+		
+		// draw boat
+		WritableImage subimage5;
+		subimage5 = new WritableImage(reader5, 0, tileSize, tileSize, tileSize);
+		
+		gc.drawImage(subimage5, 12*tileSize, 14*tileSize);
     }
 }
