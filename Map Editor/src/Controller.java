@@ -49,7 +49,7 @@ public class Controller {
 	PixelReader reader4 = axe.getPixelReader();
 	PixelReader reader5 = boat.getPixelReader();
 	
-	// draw map with items 
+	// draw map on canvas with items 
     @FXML
     public void initialize( )
     {	  	
