@@ -3,8 +3,11 @@
 
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.Scanner;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,6 +40,10 @@ public class Controller {
 	private int tileSize = 16;
 	private int numRows;
 	private int numCols;
+	private int ax;
+	private int ay;
+	private int bx;
+	private int by;
 	
 	// player and items
 	private Image diamond = new Image("/Sprites/diamond.gif");
@@ -70,14 +77,21 @@ public class Controller {
 			tiles[1][col] = new FXTile(subimage, FXTile.BLOCKED);
 		}
 		
-		// loading the map files
+		// loading the map files, map and boat locations
 		try{
 			InputStream in = getClass().getResourceAsStream("/Maps/testmap.map");
 			BufferedReader br = new BufferedReader(
 						new InputStreamReader(in)
 					);
+			
+			InputStream inn = getClass().getResourceAsStream("/Maps/axeboatloc.map");
+			BufferedReader brr = new BufferedReader(
+						new InputStreamReader(inn)
+					);
+			
 			numCols = Integer.parseInt(br.readLine());
 			numRows = Integer.parseInt(br.readLine());
+			
 			
 			map = new int[numRows][numCols];
 			
@@ -140,11 +154,11 @@ public class Controller {
 		// draw axe
 		WritableImage subimage4;
 		subimage4 = new WritableImage(reader4, tileSize, tileSize, tileSize, tileSize);
-		gc.drawImage(subimage4,37*tileSize, 26*tileSize);
+		gc.drawImage(subimage4,ay*tileSize, ax*tileSize);
 		
 		// draw boat
 		WritableImage subimage5;
 		subimage5 = new WritableImage(reader5, 0, tileSize, tileSize, tileSize);	
-		gc.drawImage(subimage5, 4*tileSize, 12*tileSize);
+		gc.drawImage(subimage5, by*tileSize, bx*tileSize);
     }
 }
