@@ -76,13 +76,15 @@ public class Controller {
     void UpdateAxeLocation(ActionEvent event) 
 	{
 		
+		TextArea.setText("Click on the map to set \nnew position of Axe.");
 		// get new location of axe
 		canvas.setOnMouseClicked(event2 -> {
-            x = (int) event2.getX(); 
-            y = (int) event2.getY();
-            
-            System.out.println(x/16);
-            System.out.println(y/16);
+			
+        x = (int) event2.getX(); 
+        y = (int) event2.getY();
+        
+        System.out.println(x/16);
+        System.out.println(y/16);
  
 		String a1 = Integer.toString(x/16);
 		String a2 = Integer.toString(y/16);
@@ -102,6 +104,8 @@ public class Controller {
         writer.write(a2 + "\n"); 
         writer.flush();
         writer.close();
+        
+        TextArea.setText("Position of Axe updated.");
 	    } 
 		catch (IOException e) {	
 			e.printStackTrace();
@@ -113,7 +117,7 @@ public class Controller {
 	@FXML
     void UpdateBoatLocation(ActionEvent event) 
 	{
-		
+		TextArea.setText("Click on the map to set \nnew position of Boat.");
 		// get new location of axe
 		canvas.setOnMouseClicked(event2 -> {
             x = (int) event2.getX(); 
@@ -140,6 +144,8 @@ public class Controller {
         writer.write(a2 + "\n"); 
         writer.flush();
         writer.close();
+        
+        TextArea.setText("Position of Boat updated.");
 	    } 
 		catch (IOException e) {	
 			e.printStackTrace();
