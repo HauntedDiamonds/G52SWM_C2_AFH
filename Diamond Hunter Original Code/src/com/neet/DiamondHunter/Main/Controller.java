@@ -23,24 +23,17 @@ import javafx.scene.image.*;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 
 public class Controller {
-
-	@FXML
-	private Button Update;
+    @FXML
+    private TextArea TextArea;
 
     @FXML
-    private TextField BoatLocationX;
+    private Button UpdateAxe;
 
     @FXML
-    private TextField BoatLocationY;
-
-    @FXML
-    private TextField AxeLocationX;
-
-    @FXML
-    private TextField AxeLocationY;
+    private Button UpdateBoat;
 
     @FXML
     private Canvas canvas;
@@ -57,12 +50,15 @@ public class Controller {
 	private int tileSize = 16;
 	private int numRows;
 	private int numCols;
+	// coordinates from source file
 	private int ax;
 	private int ay;
 	private int bx;
 	private int by;
 	
-	
+	// coordinates from click
+	int x;
+	int y;
 	
 	// player and items
 	private Image diamond = new Image("/Sprites/diamond.gif");
@@ -80,41 +76,38 @@ public class Controller {
     void UpdateLocation(ActionEvent event) 
 	{
 		
-		// coordinates from TextField
-		String a1 = AxeLocationX.getText();
-		String a2 = AxeLocationY.getText();
-		String b1 = BoatLocationX.getText();
-		String b2 = BoatLocationY.getText();
+		// get new location of axe
+		canvas.setOnMouseClicked(event2 -> {
+            x = (int) event2.getX(); 
+            y = (int) event2.getY();
+            
+            System.out.println(x/16);
+            System.out.println(y/16);
+        });
+		String a1 = Integer.toString(x/16);
+		String a2 = Integer.toString(y/16);
 		
 		File loc = new File("Resources/Maps/axelocation.map");
-		File loc2 = new File("Resources/Maps/boatlocation.map");
 	      
 	    // creates the file
 		try {
-			
-		    loc.createNewFile();
-		    loc2.createNewFile();
-	  
-	        // creates a FileWriter Object
-	        FileWriter writer = new FileWriter(loc); 
-	        FileWriter writer2 = new FileWriter(loc2); 
-	    
-	        // Writes the content to the file
-	        writer.write(a1 + "\n"); 
-	        writer.write(a2 + "\n"); 
-	        writer2.write(b1 + "\n"); 
-	        writer2.write(b2 + "\n"); 
-	        writer.flush();
-	        writer2.flush();
-	        writer.close();
-	        writer2.close();
-        
+		
+	    loc.createNewFile();
+  
+        // creates a FileWriter Object
+        FileWriter writer = new FileWriter(loc); 
+    
+        // Writes the content to the file
+        writer.write(a1 + "\n"); 
+        writer.write(a2 + "\n"); 
+        writer.flush();
+        writer.close();
 	    } 
-		catch (IOException e) 
-		{	
+		catch (IOException e) {	
 			e.printStackTrace();
 		}
 		initialize();
+		
     }
 	 
 	// draw map on canvas with items 
@@ -125,17 +118,13 @@ public class Controller {
     	// get the graphics context of the canvas
     	GraphicsContext gc = canvas.getGraphicsContext2D();
     	
-    	canvas.setOnMouseClicked(event -> {
-            double x = event.getX(), y = event.getY();
-        });
-    	
     	// loading the map tiles
     	numTilesAcross = tileset.getWidth() / tileSize;  	
     	tiles = new FXTile[2][(int) numTilesAcross];	
     	WritableImage subimage;
     	
-		for(int col = 0; col < numTilesAcross; col++) {
-			
+		for(int col = 0; col < numTilesAcross; col++) 
+		{	
 			subimage = new WritableImage(reader, col*tileSize, 0, tileSize, tileSize);
 			tiles[0][col] = new FXTile(subimage, FXTile.NORMAL);
 			
@@ -168,10 +157,12 @@ public class Controller {
 			map = new int[numRows][numCols];
 			
 			String delims = "\\s+";
-			for(int row = 0; row < numRows; row++) {
+			for(int row = 0; row < numRows; row++) 
+			{
 				String line = br.readLine();
 				String[] tokens = line.split(delims);
-				for(int col = 0; col < numCols; col++) {
+				for(int col = 0; col < numCols; col++) 
+				{
 					map[row][col] = Integer.parseInt(tokens[col]);
 				}
 			}
@@ -180,27 +171,16 @@ public class Controller {
 			e.printStackTrace();
 		}
 		
-		// set label for TextField to show current value
-		AxeLocationX.setText(Integer.toString(ax));
-		AxeLocationY.setText(Integer.toString(ay));
-		BoatLocationX.setText(Integer.toString(bx));
-		BoatLocationY.setText(Integer.toString(by));
-		
 		// drawing the map on canvas			
-		for(int row = 0; row < numRows; row++) {
-			
-			for(int col = 0; col < numCols; col++) {
-					
+		for(int row = 0; row < numRows; row++) 
+		{		
+			for(int col = 0; col < numCols; col++) 
+			{			
 				int rc = map[row][col];
 				int r = (int) (rc / numTilesAcross);
 				int c = (int) (rc % numTilesAcross);
 				
-				gc.drawImage(
-					tiles[r][c].getImage(),
-					col * tileSize,
-					row * tileSize
-				);
-				
+				gc.drawImage(tiles[r][c].getImage(), col * tileSize, row * tileSize);
 			}
 		}
 		
@@ -232,12 +212,12 @@ public class Controller {
 		// draw axe
 		WritableImage subimage4;
 		subimage4 = new WritableImage(reader4, tileSize, tileSize, tileSize, tileSize);
-		gc.drawImage(subimage4,ay*tileSize, ax*tileSize);
+		gc.drawImage(subimage4,ax*tileSize, ay*tileSize);
 		
 		// draw boat
 		WritableImage subimage5;
 		subimage5 = new WritableImage(reader5, 0, tileSize, tileSize, tileSize);	
-		gc.drawImage(subimage5, by*tileSize, bx*tileSize);
+		gc.drawImage(subimage5, bx*tileSize, by*tileSize);
 		
 		
     }
