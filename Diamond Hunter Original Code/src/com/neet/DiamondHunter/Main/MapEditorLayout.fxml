@@ -14,9 +14,9 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="498.0">
                <children>
                   <Label alignment="CENTER" layoutX="194.0" layoutY="-11.0" prefHeight="63.0" prefWidth="240.0" text="DIAMOND HUNTER MAP EDITOR" textAlignment="CENTER" textFill="#317cdd" textOverrun="CLIP" />
-                  <TextArea fx:id="TextArea" layoutX="226.0" layoutY="45.0" onDragDetected="#UpdateLocation" prefHeight="63.0" prefWidth="176.0" />
-                  <Button fx:id="UpdateAxe" layoutX="14.0" layoutY="64.0" mnemonicParsing="false" onAction="#UpdateLocation" text="Update Axe Location" />
-                  <Button fx:id="UpdateBoat" layoutX="487.0" layoutY="64.0" mnemonicParsing="false" onAction="#UpdateLocation" text="Update Boat Location" />
+                  <TextArea fx:id="TextArea" layoutX="226.0" layoutY="45.0" prefHeight="63.0" prefWidth="176.0" />
+                  <Button fx:id="UpdateAxe" layoutX="14.0" layoutY="64.0" mnemonicParsing="false" onAction="#UpdateAxeLocation" text="Update Axe Location" />
+                  <Button fx:id="UpdateBoat" layoutX="487.0" layoutY="64.0" mnemonicParsing="false" onAction="#UpdateBoatLocation" text="Update Boat Location" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">

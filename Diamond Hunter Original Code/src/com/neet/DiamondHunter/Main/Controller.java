@@ -73,7 +73,7 @@ public class Controller {
 	
 	// obtain new coordinates from user and update
 	@FXML
-    void UpdateLocation(ActionEvent event) 
+    void UpdateAxeLocation(ActionEvent event) 
 	{
 		
 		// get new location of axe
@@ -83,7 +83,7 @@ public class Controller {
             
             System.out.println(x/16);
             System.out.println(y/16);
-        });
+ 
 		String a1 = Integer.toString(x/16);
 		String a2 = Integer.toString(y/16);
 		
@@ -107,7 +107,45 @@ public class Controller {
 			e.printStackTrace();
 		}
 		initialize();
+		});
+    }
+	
+	@FXML
+    void UpdateBoatLocation(ActionEvent event) 
+	{
 		
+		// get new location of axe
+		canvas.setOnMouseClicked(event2 -> {
+            x = (int) event2.getX(); 
+            y = (int) event2.getY();
+            
+            System.out.println(x/16);
+            System.out.println(y/16);
+ 
+		String a1 = Integer.toString(x/16);
+		String a2 = Integer.toString(y/16);
+		
+		File loc = new File("Resources/Maps/boatlocation.map");
+	      
+	    // creates the file
+		try {
+		
+	    loc.createNewFile();
+  
+        // creates a FileWriter Object
+        FileWriter writer = new FileWriter(loc); 
+    
+        // Writes the content to the file
+        writer.write(a1 + "\n"); 
+        writer.write(a2 + "\n"); 
+        writer.flush();
+        writer.close();
+	    } 
+		catch (IOException e) {	
+			e.printStackTrace();
+		}
+		initialize();
+		});
     }
 	 
 	// draw map on canvas with items 
