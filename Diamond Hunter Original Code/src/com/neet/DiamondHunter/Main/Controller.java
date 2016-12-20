@@ -1,3 +1,4 @@
+package com.neet.DiamondHunter.Main;
 // controller class for map editor javafx
 // the class draw the whole map on canvas when initialize
 
@@ -84,8 +85,7 @@ public class Controller {
 						new InputStreamReader(in)
 					);
 			
-			File f = new File("/Maps/axeboatloc.map");
-			System.out.println(f.getAbsolutePath());
+			File f = new File("Resources/Maps/axeboatloc.map");
 			Scanner s = new Scanner(f);
 			
 			ax = s.nextInt();
