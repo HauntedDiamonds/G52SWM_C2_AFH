@@ -62,6 +62,8 @@ public class Controller {
 	private int bx;
 	private int by;
 	
+	
+	
 	// player and items
 	private Image diamond = new Image("/Sprites/diamond.gif");
 	private Image player = new Image("/Sprites/playersprites.gif");
@@ -84,23 +86,28 @@ public class Controller {
 		String b1 = BoatLocationX.getText();
 		String b2 = BoatLocationY.getText();
 		
-		File loc = new File("Resources/Maps/axeboatloc.map");
+		File loc = new File("Resources/Maps/axelocation.map");
+		File loc2 = new File("Resources/Maps/boatlocation.map");
 	      
 	    // creates the file
 		try {
 			
 		    loc.createNewFile();
+		    loc2.createNewFile();
 	  
 	        // creates a FileWriter Object
 	        FileWriter writer = new FileWriter(loc); 
+	        FileWriter writer2 = new FileWriter(loc2); 
 	    
 	        // Writes the content to the file
 	        writer.write(a1 + "\n"); 
 	        writer.write(a2 + "\n"); 
-	        writer.write(b1 + "\n"); 
-	        writer.write(b2 + "\n"); 
+	        writer2.write(b1 + "\n"); 
+	        writer2.write(b2 + "\n"); 
 	        writer.flush();
+	        writer2.flush();
 	        writer.close();
+	        writer2.close();
         
 	    } 
 		catch (IOException e) 
@@ -112,22 +119,15 @@ public class Controller {
 	 
 	// draw map on canvas with items 
     @FXML
-    public void initialize( )
-    {	  	
+    public void initialize()
+    {	
+    	
     	// get the graphics context of the canvas
     	GraphicsContext gc = canvas.getGraphicsContext2D();
     	
-    	/**canvas.setOnMouseClicked(new EventHandler<Event>(){
-
-    		@Override
-    		public void handle(Event event) {
-    			GraphicsContext meow = canvas.getGraphicsContext2D();
-    	        System.out.println(meow);
-    			
-    		}
-        	
+    	canvas.setOnMouseClicked(event -> {
+            double x = event.getX(), y = event.getY();
         });
-        */
     	
     	// loading the map tiles
     	numTilesAcross = tileset.getWidth() / tileSize;  	
@@ -150,13 +150,16 @@ public class Controller {
 						new InputStreamReader(in)
 					);
 			
-			File f = new File("Resources/Maps/axeboatloc.map");
+			File f = new File("Resources/Maps/axelocation.map");
 			Scanner s = new Scanner(f);
+			
+			File f2 = new File("Resources/Maps/boatlocation.map");
+			Scanner s2 = new Scanner(f2);
 			
 			ax = s.nextInt();
 			ay = s.nextInt();
-			bx = s.nextInt();
-			by = s.nextInt();
+			bx = s2.nextInt();
+			by = s2.nextInt();
 			
 			numCols = Integer.parseInt(br.readLine());
 			numRows = Integer.parseInt(br.readLine());

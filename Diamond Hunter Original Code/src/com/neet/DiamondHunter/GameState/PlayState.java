@@ -192,13 +192,16 @@ public class PlayState extends GameState {
 		Item item;
 		try{
 			
-			File f = new File("Resources/Maps/axeboatloc.map");
+			File f = new File("Resources/Maps/axelocation.map");
 			Scanner s = new Scanner(f);
+			
+			File f2 = new File("Resources/Maps/boatlocation.map");
+			Scanner s2 = new Scanner(f2);
 			
 			ax = s.nextInt();
 			ay = s.nextInt();
-			bx = s.nextInt();
-			by = s.nextInt();
+			bx = s2.nextInt();
+			by = s2.nextInt();
 		}
 		catch(Exception e)
 		{
