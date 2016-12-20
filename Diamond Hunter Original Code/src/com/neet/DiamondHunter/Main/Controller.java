@@ -13,6 +13,8 @@ import java.util.Scanner;
 import com.neet.DiamondHunter.TileMap.FXTile;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.image.*;
 import javafx.scene.canvas.Canvas;
@@ -22,14 +24,23 @@ import javafx.scene.control.TextField;
 
 public class Controller {
 
+	@FXML
+	private Button Update;
+
     @FXML
-    private Button submit;
-    
+    private TextField BoatLocationX;
+
+    @FXML
+    private TextField BoatLocationY;
+
+    @FXML
+    private TextField AxeLocationX;
+
+    @FXML
+    private TextField AxeLocationY;
+
     @FXML
     private Canvas canvas;
-    
-    @FXML
-    private TextField testing;
     
     // tile sets
     private Image tileset = new Image("/Tilesets/testtileset.gif");
@@ -59,12 +70,34 @@ public class Controller {
 	PixelReader reader4 = axe.getPixelReader();
 	PixelReader reader5 = boat.getPixelReader();
 	
+	// obtain coordinate from user
+	@FXML
+    void UpdateLocation(ActionEvent event) 
+	{
+		int a1 = Integer.parseInt(AxeLocationX.getText());
+		int a2 = Integer.parseInt(AxeLocationY.getText());
+		int b1 = Integer.parseInt(BoatLocationX.getText());
+		int b2 = Integer.parseInt(BoatLocationY.getText());
+    }
+	 
 	// draw map on canvas with items 
     @FXML
     public void initialize( )
     {	  	
     	// get the graphics context of the canvas
     	GraphicsContext gc = canvas.getGraphicsContext2D();
+    	
+    	/**canvas.setOnMouseClicked(new EventHandler<Event>(){
+
+    		@Override
+    		public void handle(Event event) {
+    			GraphicsContext meow = canvas.getGraphicsContext2D();
+    	        System.out.println(meow);
+    			
+    		}
+        	
+        });
+        */
     	
     	// loading the map tiles
     	numTilesAcross = tileset.getWidth() / tileSize;  	
@@ -166,5 +199,9 @@ public class Controller {
 		WritableImage subimage5;
 		subimage5 = new WritableImage(reader5, 0, tileSize, tileSize, tileSize);	
 		gc.drawImage(subimage5, by*tileSize, bx*tileSize);
+		
+		
     }
+    
+    
 }
