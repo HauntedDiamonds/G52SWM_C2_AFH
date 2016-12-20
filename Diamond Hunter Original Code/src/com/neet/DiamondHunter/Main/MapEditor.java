@@ -26,8 +26,8 @@ public class MapEditor extends Application {
 		}
 	}
 	
-	public static void main(String[] args) {
-		launch(args);
+	public static void LaunchME() {
+		launch();
 	}
 	
 }

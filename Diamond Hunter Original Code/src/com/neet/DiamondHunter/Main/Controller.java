@@ -82,9 +82,6 @@ public class Controller {
 			
         x = (int) event2.getX(); 
         y = (int) event2.getY();
-        
-        System.out.println(x/16);
-        System.out.println(y/16);
  
 		String a1 = Integer.toString(x/16);
 		String a2 = Integer.toString(y/16);
@@ -122,9 +119,6 @@ public class Controller {
 		canvas.setOnMouseClicked(event2 -> {
             x = (int) event2.getX(); 
             y = (int) event2.getY();
-            
-            System.out.println(x/16);
-            System.out.println(y/16);
  
 		String a1 = Integer.toString(x/16);
 		String a2 = Integer.toString(y/16);
