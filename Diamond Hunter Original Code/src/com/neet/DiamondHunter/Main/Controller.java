@@ -4,7 +4,10 @@ package com.neet.DiamondHunter.Main;
 
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -70,14 +73,41 @@ public class Controller {
 	PixelReader reader4 = axe.getPixelReader();
 	PixelReader reader5 = boat.getPixelReader();
 	
-	// obtain coordinate from user
+	// obtain new coordinates from user and update
 	@FXML
     void UpdateLocation(ActionEvent event) 
 	{
-		int a1 = Integer.parseInt(AxeLocationX.getText());
-		int a2 = Integer.parseInt(AxeLocationY.getText());
-		int b1 = Integer.parseInt(BoatLocationX.getText());
-		int b2 = Integer.parseInt(BoatLocationY.getText());
+		
+		// coordinates from TextField
+		String a1 = AxeLocationX.getText();
+		String a2 = AxeLocationY.getText();
+		String b1 = BoatLocationX.getText();
+		String b2 = BoatLocationY.getText();
+		
+		File loc = new File("Resources/Maps/axeboatloc.map");
+	      
+	    // creates the file
+		try {
+			
+		    loc.createNewFile();
+	  
+	        // creates a FileWriter Object
+	        FileWriter writer = new FileWriter(loc); 
+	    
+	        // Writes the content to the file
+	        writer.write(a1 + "\n"); 
+	        writer.write(a2 + "\n"); 
+	        writer.write(b1 + "\n"); 
+	        writer.write(b2 + "\n"); 
+	        writer.flush();
+	        writer.close();
+        
+	    } 
+		catch (IOException e) 
+		{	
+			e.printStackTrace();
+		}
+		initialize();
     }
 	 
 	// draw map on canvas with items 
@@ -146,6 +176,12 @@ public class Controller {
 		catch(Exception e){
 			e.printStackTrace();
 		}
+		
+		// set label for TextField to show current value
+		AxeLocationX.setText(Integer.toString(ax));
+		AxeLocationY.setText(Integer.toString(ay));
+		BoatLocationX.setText(Integer.toString(bx));
+		BoatLocationY.setText(Integer.toString(by));
 		
 		// drawing the map on canvas			
 		for(int row = 0; row < numRows; row++) {
