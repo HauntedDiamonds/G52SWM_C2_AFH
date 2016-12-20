@@ -1,4 +1,4 @@
-package com.neet.DiamondHunter.Main;
+package com.neet.DiamondHunter.TileMap;
 // similar class to tile class
 // special to store tileset for image type
 // differ from tile class tostore buffered image

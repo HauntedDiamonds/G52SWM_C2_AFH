@@ -6,12 +6,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXMLLoader;
 
 
-public class Main extends Application {
+public class MapEditor extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Sample.fxml"));
+			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("MapEditorLayout.fxml"));
 			Scene scene = new Scene(root,630,785);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
