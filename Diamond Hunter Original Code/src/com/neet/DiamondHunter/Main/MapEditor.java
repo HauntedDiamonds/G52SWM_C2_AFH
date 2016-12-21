@@ -12,7 +12,7 @@ public class MapEditor extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("MapEditorLayout.fxml"));
-			Scene scene = new Scene(root,630,785);
+			Scene scene = new Scene(root,630,870);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			
 			primaryStage.setScene(scene);
@@ -25,7 +25,6 @@ public class MapEditor extends Application {
 			e.printStackTrace();
 		}
 	}
-	
 	public static void LaunchME() {
 		launch();
 	}

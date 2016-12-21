@@ -20,6 +20,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.image.*;
+import javafx.stage.Stage;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
@@ -37,6 +38,9 @@ public class Controller {
 
     @FXML
     private Canvas canvas;
+    
+    @FXML
+    private Button CloseButton;
     
     // tile sets
     private Image tileset = new Image("/Tilesets/testtileset.gif");
@@ -114,7 +118,7 @@ public class Controller {
 	@FXML
     void UpdateBoatLocation(ActionEvent event) 
 	{
-		TextArea.setText("Click on the map to set \nnew position of Boat.");
+		TextArea.setText("Click on the map to set\nnew position of Boat.");
 		// get new location of axe
 		canvas.setOnMouseClicked(event2 -> {
             x = (int) event2.getX(); 
@@ -147,6 +151,13 @@ public class Controller {
 		initialize();
 		});
     }
+	
+	//exit button method
+	@FXML
+	public void closeButton(ActionEvent event){
+		Stage stage = (Stage) CloseButton.getScene().getWindow();
+		stage.close();
+	}
 	 
 	// draw map on canvas with items 
     @FXML
@@ -224,6 +235,7 @@ public class Controller {
 		
 		// drawing the diamonds
 		WritableImage subimage2;
+		
 		subimage2 = new WritableImage(reader2, 0, 0, tileSize, tileSize);
 		
 		gc.drawImage(subimage2, 20*tileSize, 20*tileSize);
