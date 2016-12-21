@@ -93,8 +93,7 @@ public class TileMap {
 	
 	public void loadMap(String s) {
 		
-		try {
-			
+		try {		
 			InputStream in = getClass().getResourceAsStream(s);
 			BufferedReader br = new BufferedReader(
 						new InputStreamReader(in)
@@ -121,12 +120,11 @@ public class TileMap {
 					map[row][col] = Integer.parseInt(tokens[col]);
 				}
 			}
-			
 		}
-		catch(Exception e) {
+		catch(Exception e) 
+		{
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public int getTileSize() { return tileSize; }

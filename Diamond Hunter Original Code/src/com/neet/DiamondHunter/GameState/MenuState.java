@@ -5,6 +5,7 @@ package com.neet.DiamondHunter.GameState;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
+import com.neet.DiamondHunter.Main.MapEditor;
 import com.neet.DiamondHunter.Manager.Content;
 import com.neet.DiamondHunter.Manager.GameStateManager;
 import com.neet.DiamondHunter.Manager.JukeBox;
@@ -23,6 +24,7 @@ public class MenuState extends GameState {
 	private String[] options = {
 		"START",
 		"QUIT",
+		"MAP EDITOR"
 	};
 	
 	public MenuState(GameStateManager gsm) {
@@ -46,9 +48,11 @@ public class MenuState extends GameState {
 		
 		Content.drawString(g, options[0], 44, 90);
 		Content.drawString(g, options[1], 48, 100);
+		Content.drawString(g, options[2], 25, 120);
 		
 		if(currentOption == 0) g.drawImage(diamond, 25, 86, null);
 		else if(currentOption == 1) g.drawImage(diamond, 25, 96, null);
+		else if(currentOption == 2) g.drawImage(diamond, 8, 116, null);
 
 	}
 	
@@ -73,6 +77,10 @@ public class MenuState extends GameState {
 		}
 		if(currentOption == 1) {
 			System.exit(0);
+		}
+		if(currentOption == 2) {
+			
+			MapEditor.LaunchME();
 		}
 		
 	}
