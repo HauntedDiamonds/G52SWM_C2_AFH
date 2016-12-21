@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="785.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <children>
+      <SplitPane dividerPositions="0.18394648829431437" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="700.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="498.0">
+               <children>
+                  <TextField fx:id="AxeLocation" alignment="CENTER" layoutX="477.0" layoutY="100.0" onAction="#initialize" prefHeight="25.0" prefWidth="182.0" promptText="( x , y )  - coordinate" />
+                  <Label layoutX="508.0" layoutY="79.0" text="New Axe Location:" />
+                  <Button fx:id="Submit" layoutX="253.0" layoutY="99.0" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="194.0" text="Update Location" />
+                  <Label layoutX="81.0" layoutY="79.0" prefHeight="17.0" prefWidth="103.0" text="New Boat Location:" />
+                  <TextField fx:id="BoatLocation" alignment="CENTER" layoutX="45.0" layoutY="100.0" prefHeight="25.0" prefWidth="182.0" promptText="( x , y )  - coordinate" />
+                  <ImageView fitHeight="54.0" fitWidth="643.0" layoutX="24.0" layoutY="15.0">
+                     <image>
+                        <Image url="@../../Diamond%20Hunter%20Original%20Code/Resources/diamond%20hunter%20map%20editor.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Canvas fx:id="canvas" height="640.0" width="640.0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
