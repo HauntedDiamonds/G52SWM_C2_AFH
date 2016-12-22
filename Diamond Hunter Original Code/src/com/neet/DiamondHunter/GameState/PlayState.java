@@ -192,7 +192,7 @@ public class PlayState extends GameState {
 		Item item;
 		try{
 			
-			File f = new File("Resources/Maps/axelocation.map");
+			/*File f = new File("Resources/Maps/axelocation.map");
 			Scanner s = new Scanner(f);
 			
 			File f2 = new File("Resources/Maps/boatlocation.map");
@@ -201,7 +201,30 @@ public class PlayState extends GameState {
 			ax = s.nextInt();
 			ay = s.nextInt();
 			bx = s2.nextInt();
-			by = s2.nextInt();
+			by = s2.nextInt();*/
+			
+			InputStream f = getClass().getResourceAsStream("/Maps/axelocation.map");
+			BufferedReader fr = new BufferedReader(
+					new InputStreamReader(f)
+				);
+			
+			InputStream f2 = getClass().getResourceAsStream("/Maps/boatlocation.map");
+			BufferedReader fr2 = new BufferedReader(
+					new InputStreamReader(f2)
+				);
+			
+			//get coordinate for location of axe
+			String[] axel = fr.readLine().split(" ");
+			ax = Integer.parseInt(axel[0]);
+			ay = Integer.parseInt(axel[1]);
+			
+			//get coordinate for location of boat
+			String[] boatl = fr2.readLine().split(" ");
+			bx = Integer.parseInt(boatl[0]);
+			by = Integer.parseInt(boatl[1]);
+			
+			fr.close();
+			fr2.close();
 		}
 		catch(Exception e)
 		{

@@ -6,10 +6,12 @@ package com.neet.DiamondHunter.Main;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.URL;
 import java.util.Scanner;
 
@@ -81,6 +83,7 @@ public class Controller {
 	{
 		
 		TextArea.setText("Click on the map to set \nnew position of Axe.");
+		
 		// get new location of axe
 		canvas.setOnMouseClicked(event2 -> {
 			
@@ -91,7 +94,7 @@ public class Controller {
 		String a2 = Integer.toString(y/16);
 		
 		File loc = new File("Resources/Maps/axelocation.map");
-	      
+		
 	    // creates the file
 		try {
 		
@@ -101,8 +104,8 @@ public class Controller {
         FileWriter writer = new FileWriter(loc); 
     
         // Writes the content to the file
-        writer.write(a1 + "\n"); 
-        writer.write(a2 + "\n"); 
+        writer.write(a1 + " "); 
+        writer.write(a2 + " "); 
         writer.flush();
         writer.close();
         
@@ -123,12 +126,16 @@ public class Controller {
 		canvas.setOnMouseClicked(event2 -> {
             x = (int) event2.getX(); 
             y = (int) event2.getY();
+            
  
 		String a1 = Integer.toString(x/16);
 		String a2 = Integer.toString(y/16);
 		
 		File loc = new File("Resources/Maps/boatlocation.map");
-	      
+	    
+		System.out.println(a1);
+        System.out.println(a2);
+		
 	    // creates the file
 		try {
 		
@@ -138,8 +145,8 @@ public class Controller {
         FileWriter writer = new FileWriter(loc); 
     
         // Writes the content to the file
-        writer.write(a1 + "\n"); 
-        writer.write(a2 + "\n"); 
+        writer.write(a1 + " "); 
+        writer.write(a2 + " "); 
         writer.flush();
         writer.close();
         
@@ -188,16 +195,25 @@ public class Controller {
 						new InputStreamReader(in)
 					);
 			
-			File f = new File("Resources/Maps/axelocation.map");
-			Scanner s = new Scanner(f);
+			InputStream f = getClass().getResourceAsStream("/Maps/axelocation.map");
+			BufferedReader fr = new BufferedReader(
+					new InputStreamReader(f)
+				);
 			
-			File f2 = new File("Resources/Maps/boatlocation.map");
-			Scanner s2 = new Scanner(f2);
+			InputStream f2 = getClass().getResourceAsStream("/Maps/boatlocation.map");
+			BufferedReader fr2 = new BufferedReader(
+					new InputStreamReader(f2)
+				);
 			
-			ax = s.nextInt();
-			ay = s.nextInt();
-			bx = s2.nextInt();
-			by = s2.nextInt();
+			//get coordinate for location of axe
+			String[] axel = fr.readLine().split(" ");
+			ax = Integer.parseInt(axel[0]);
+			ay = Integer.parseInt(axel[1]);
+			
+			//get coordinate for location of boat
+			String[] boatl = fr2.readLine().split(" ");
+			bx = Integer.parseInt(boatl[0]);
+			by = Integer.parseInt(boatl[1]);
 			
 			numCols = Integer.parseInt(br.readLine());
 			numRows = Integer.parseInt(br.readLine());
@@ -215,6 +231,9 @@ public class Controller {
 					map[row][col] = Integer.parseInt(tokens[col]);
 				}
 			}
+			
+			br.close();
+			fr.close();
 		}
 		catch(Exception e){
 			e.printStackTrace();
