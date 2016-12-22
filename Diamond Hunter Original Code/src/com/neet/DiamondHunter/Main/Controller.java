@@ -57,14 +57,14 @@ public class Controller {
 	private int numRows;
 	private int numCols;
 	// coordinates from source file
-	private int ax;
-	private int ay;
-	private int bx;
-	private int by;
+	public static int ax = 22;
+	public static int ay = 19;
+	public static int bx = 22;
+	public static int by = 18;
 	
 	// coordinates from click
-	int x;
-	int y;
+	static int x;
+	static int y;
 	
 	// player and items
 	private Image diamond = new Image("/Sprites/diamond.gif");
@@ -89,13 +89,19 @@ public class Controller {
 			
         x = (int) event2.getX(); 
         y = (int) event2.getY();
+        
+        //System.out.println(x/16);
  
-		String a1 = Integer.toString(x/16);
-		String a2 = Integer.toString(y/16);
+		int a1 = (x/16);
+		int a2 = (y/16);
 		
-		File loc = new File("Resources/Maps/axelocation.map");
+		
+		//unused write coordinate to file method
+		
+		//File loc = new File("Resources/Maps/axelocation.map");
 		
 	    // creates the file
+		/*
 		try {
 		
 	    loc.createNewFile();
@@ -107,13 +113,19 @@ public class Controller {
         writer.write(a1 + " "); 
         writer.write(a2 + " "); 
         writer.flush();
-        writer.close();
+        writer.close(); 
         
         TextArea.setText("Position of Axe updated.");
 	    } 
 		catch (IOException e) {	
 			e.printStackTrace();
-		}
+		}*/
+		
+		ax = a1;
+		ay = a2;
+		
+		TextArea.setText("Position of Axe updated.");
+		
 		initialize();
 		});
     }
@@ -128,15 +140,18 @@ public class Controller {
             y = (int) event2.getY();
             
  
-		String a1 = Integer.toString(x/16);
-		String a2 = Integer.toString(y/16);
+		int a1 = (x/16);
+		int a2 = (y/16);
 		
-		File loc = new File("Resources/Maps/boatlocation.map");
+		//File loc = new File("Resources/Maps/boatlocation.map");
 	    
-		System.out.println(a1);
-        System.out.println(a2);
+		//System.out.println(a1);
+        //System.out.println(a2);
 		
 	    // creates the file
+		
+		
+		/*
 		try {
 		
 	    loc.createNewFile();
@@ -154,7 +169,13 @@ public class Controller {
 	    } 
 		catch (IOException e) {	
 			e.printStackTrace();
-		}
+		}*/
+		
+		bx = a1;
+		by = a2;
+		
+		TextArea.setText("Position of Boat updated.");
+		
 		initialize();
 		});
     }
@@ -189,31 +210,34 @@ public class Controller {
 		}
 		
 		// loading the map files, map and boat locations
+		
 		try{
 			InputStream in = getClass().getResourceAsStream("/Maps/testmap.map");
 			BufferedReader br = new BufferedReader(
 						new InputStreamReader(in)
 					);
 			
-			InputStream f = getClass().getResourceAsStream("/Maps/axelocation.map");
-			BufferedReader fr = new BufferedReader(
-					new InputStreamReader(f)
-				);
+			//InputStream f = getClass().getResourceAsStream("/Maps/axelocation.map");
+			//BufferedReader fr = new BufferedReader(
+					//new InputStreamReader(f)
+				//);
 			
-			InputStream f2 = getClass().getResourceAsStream("/Maps/boatlocation.map");
-			BufferedReader fr2 = new BufferedReader(
-					new InputStreamReader(f2)
-				);
+			//InputStream f2 = getClass().getResourceAsStream("/Maps/boatlocation.map");
+			//BufferedReader fr2 = new BufferedReader(
+					//new InputStreamReader(f2)
+				//);
 			
 			//get coordinate for location of axe
-			String[] axel = fr.readLine().split(" ");
-			ax = Integer.parseInt(axel[0]);
-			ay = Integer.parseInt(axel[1]);
+			
+			//String[] axel = fr.readLine().split(" ");
+			//ax = Integer.parseInt(axel[0]);
+			//ay = Integer.parseInt(axel[1]);
 			
 			//get coordinate for location of boat
-			String[] boatl = fr2.readLine().split(" ");
-			bx = Integer.parseInt(boatl[0]);
-			by = Integer.parseInt(boatl[1]);
+			
+			//String[] boatl = fr2.readLine().split(" ");
+			//bx = Integer.parseInt(boatl[0]);
+			//by = Integer.parseInt(boatl[1]);
 			
 			numCols = Integer.parseInt(br.readLine());
 			numRows = Integer.parseInt(br.readLine());
@@ -233,7 +257,7 @@ public class Controller {
 			}
 			
 			br.close();
-			fr.close();
+			//fr.close();
 		}
 		catch(Exception e){
 			e.printStackTrace();

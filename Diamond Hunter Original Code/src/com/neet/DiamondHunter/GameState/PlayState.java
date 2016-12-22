@@ -22,6 +22,7 @@ import com.neet.DiamondHunter.Entity.Item;
 import com.neet.DiamondHunter.Entity.Player;
 import com.neet.DiamondHunter.Entity.Sparkle;
 import com.neet.DiamondHunter.HUD.Hud;
+import com.neet.DiamondHunter.Main.Controller;
 import com.neet.DiamondHunter.Main.GamePanel;
 import com.neet.DiamondHunter.Manager.Data;
 import com.neet.DiamondHunter.Manager.GameStateManager;
@@ -214,14 +215,19 @@ public class PlayState extends GameState {
 				);
 			
 			//get coordinate for location of axe
+				
 			String[] axel = fr.readLine().split(" ");
-			ax = Integer.parseInt(axel[0]);
-			ay = Integer.parseInt(axel[1]);
+			//ax = Integer.parseInt(axel[0]);
+			//ay = Integer.parseInt(axel[1]);
+			ax = Controller.ax;
+			ay = Controller.ay;
 			
 			//get coordinate for location of boat
 			String[] boatl = fr2.readLine().split(" ");
-			bx = Integer.parseInt(boatl[0]);
-			by = Integer.parseInt(boatl[1]);
+			//bx = Integer.parseInt(boatl[0]);
+			//by = Integer.parseInt(boatl[1]);
+			bx = Controller.bx;
+			by = Controller.by;
 			
 			fr.close();
 			fr2.close();
