@@ -22,5 +22,4 @@ public class Game {
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	}
-	
 }

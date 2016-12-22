@@ -18,9 +18,9 @@
                   <TextArea fx:id="TextArea" layoutX="200.0" layoutY="74.0" prefHeight="63.0" prefWidth="224.0" text="Click on any button to start" />
                   <Button fx:id="UpdateAxe" layoutX="35.0" layoutY="97.0" mnemonicParsing="false" onAction="#UpdateAxeLocation" text="Update Axe Location" />
                   <Button fx:id="UpdateBoat" layoutX="431.0" layoutY="96.0" mnemonicParsing="false" onAction="#UpdateBoatLocation" text="Update Boat Location" />
-                  <ImageView fitHeight="50.0" fitWidth="556.0" layoutX="36.0" layoutY="14.0">
+                  <ImageView fitHeight="50.0" fitWidth="556.0" layoutX="36.0" layoutY="14.0" nodeOrientation="INHERIT">
                      <image>
-                        <Image url="@../../../../../Resources/diamond%20hunter%20map%20editor.png" />
+                        <Image url="/Sprites/bg.png" />
                      </image>
                   </ImageView>
                </children>

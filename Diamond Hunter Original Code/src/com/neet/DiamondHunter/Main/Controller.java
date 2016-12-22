@@ -46,6 +46,7 @@ public class Controller {
     
     // tile sets
     private Image tileset = new Image("/Tilesets/testtileset.gif");
+    
     // to store sub image (newly formed or cropped)
     PixelReader reader = tileset.getPixelReader();
     private double numTilesAcross;
@@ -56,6 +57,7 @@ public class Controller {
 	private int tileSize = 16;
 	private int numRows;
 	private int numCols;
+	
 	// coordinates from source file
 	public static int ax = 22;
 	public static int ay = 19;
@@ -71,6 +73,7 @@ public class Controller {
 	private Image player = new Image("/Sprites/playersprites.gif");
 	private Image axe = new Image("/Sprites/items.gif");
 	private Image boat = new Image("/Sprites/items.gif");
+	
 	// to store sub image (newly formed or cropped)
 	PixelReader reader2 = diamond.getPixelReader();
 	PixelReader reader3 = player.getPixelReader();
@@ -95,32 +98,6 @@ public class Controller {
 		int a1 = (x/16);
 		int a2 = (y/16);
 		
-		
-		//unused write coordinate to file method
-		
-		//File loc = new File("Resources/Maps/axelocation.map");
-		
-	    // creates the file
-		/*
-		try {
-		
-	    loc.createNewFile();
-  
-        // creates a FileWriter Object
-        FileWriter writer = new FileWriter(loc); 
-    
-        // Writes the content to the file
-        writer.write(a1 + " "); 
-        writer.write(a2 + " "); 
-        writer.flush();
-        writer.close(); 
-        
-        TextArea.setText("Position of Axe updated.");
-	    } 
-		catch (IOException e) {	
-			e.printStackTrace();
-		}*/
-		
 		ax = a1;
 		ay = a2;
 		
@@ -134,6 +111,7 @@ public class Controller {
     void UpdateBoatLocation(ActionEvent event) 
 	{
 		TextArea.setText("Click on the map to set\nnew position of Boat.");
+		
 		// get new location of axe
 		canvas.setOnMouseClicked(event2 -> {
             x = (int) event2.getX(); 
@@ -142,34 +120,6 @@ public class Controller {
  
 		int a1 = (x/16);
 		int a2 = (y/16);
-		
-		//File loc = new File("Resources/Maps/boatlocation.map");
-	    
-		//System.out.println(a1);
-        //System.out.println(a2);
-		
-	    // creates the file
-		
-		
-		/*
-		try {
-		
-	    loc.createNewFile();
-  
-        // creates a FileWriter Object
-        FileWriter writer = new FileWriter(loc); 
-    
-        // Writes the content to the file
-        writer.write(a1 + " "); 
-        writer.write(a2 + " "); 
-        writer.flush();
-        writer.close();
-        
-        TextArea.setText("Position of Boat updated.");
-	    } 
-		catch (IOException e) {	
-			e.printStackTrace();
-		}*/
 		
 		bx = a1;
 		by = a2;
@@ -217,28 +167,6 @@ public class Controller {
 						new InputStreamReader(in)
 					);
 			
-			//InputStream f = getClass().getResourceAsStream("/Maps/axelocation.map");
-			//BufferedReader fr = new BufferedReader(
-					//new InputStreamReader(f)
-				//);
-			
-			//InputStream f2 = getClass().getResourceAsStream("/Maps/boatlocation.map");
-			//BufferedReader fr2 = new BufferedReader(
-					//new InputStreamReader(f2)
-				//);
-			
-			//get coordinate for location of axe
-			
-			//String[] axel = fr.readLine().split(" ");
-			//ax = Integer.parseInt(axel[0]);
-			//ay = Integer.parseInt(axel[1]);
-			
-			//get coordinate for location of boat
-			
-			//String[] boatl = fr2.readLine().split(" ");
-			//bx = Integer.parseInt(boatl[0]);
-			//by = Integer.parseInt(boatl[1]);
-			
 			numCols = Integer.parseInt(br.readLine());
 			numRows = Integer.parseInt(br.readLine());
 			
@@ -256,8 +184,6 @@ public class Controller {
 				}
 			}
 			
-			br.close();
-			//fr.close();
 		}
 		catch(Exception e){
 			e.printStackTrace();
