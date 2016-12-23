@@ -4,22 +4,12 @@ package com.neet.DiamondHunter.Main;
 
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.URL;
-import java.util.Scanner;
 
 import com.neet.DiamondHunter.TileMap.FXTile;
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.image.*;
 import javafx.stage.Stage;

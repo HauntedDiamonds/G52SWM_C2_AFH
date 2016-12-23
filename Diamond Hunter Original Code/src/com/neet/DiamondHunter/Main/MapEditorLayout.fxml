@@ -9,15 +9,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane prefHeight="865.0" prefWidth="630.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neet.DiamondHunter.Main.Controller">
+<AnchorPane prefHeight="865.0" prefWidth="630.0" stylesheets="/CSS%20file/stylingdh.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.neet.DiamondHunter.Main.Controller">
    <children>
       <SplitPane dividerPositions="0.18394648829431437" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="785.0" prefWidth="630.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="114.0" prefWidth="498.0">
                <children>
-                  <TextArea fx:id="TextArea" layoutX="200.0" layoutY="74.0" prefHeight="63.0" prefWidth="224.0" text="Click on any button to start" />
-                  <Button fx:id="UpdateAxe" layoutX="35.0" layoutY="97.0" mnemonicParsing="false" onAction="#UpdateAxeLocation" text="Update Axe Location" />
-                  <Button fx:id="UpdateBoat" layoutX="431.0" layoutY="96.0" mnemonicParsing="false" onAction="#UpdateBoatLocation" text="Update Boat Location" />
+                  <TextArea fx:id="TextArea" layoutX="206.0" layoutY="81.0" prefHeight="63.0" prefWidth="224.0" text="Click on any button to start" />
+                  <Button fx:id="UpdateAxe" layoutX="11.0" layoutY="97.0" mnemonicParsing="false" onAction="#UpdateAxeLocation" text="Update Axe Location" />
+                  <Button fx:id="UpdateBoat" layoutX="442.0" layoutY="96.0" mnemonicParsing="false" onAction="#UpdateBoatLocation" text="Update Boat Location" />
                   <ImageView fitHeight="50.0" fitWidth="556.0" layoutX="36.0" layoutY="14.0" nodeOrientation="INHERIT">
                      <image>
                         <Image url="/Sprites/bg.png" />
@@ -34,7 +34,7 @@
                       <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="750.0">
                            <children>
                               <BorderPane layoutX="426.0" layoutY="5.0" prefHeight="31.0" prefWidth="200.0" />
-                              <Button fx:id="CloseButton" layoutX="272.0" layoutY="10.0" mnemonicParsing="false" onAction="#closeButton" text="Exit Map Edit" />
+                              <Button fx:id="CloseButton" layoutX="255.0" layoutY="10.0" mnemonicParsing="false" onAction="#closeButton" text="Exit Map Edit" />
                            </children>
                         </AnchorPane>
                     </items>
